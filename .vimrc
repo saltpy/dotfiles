@@ -15,7 +15,12 @@ set wildmode=longest,list
 set wildmenu
 set laststatus=2
 set cmdheight=2
-:set statusline=%<%f\ (%{&ft}\ %-4(%m%)%=%-19(%31,%02c%03V%)
+
+set statusline=%<\  "cut at start
+set statusline+=%t\   "tail of the filename
+set statusline+=%m\   "modified flag
+set statusline+=%y\   "filetype
+set statusline+=%P  "percentage of file
 
 set showmatch
 set incsearch
