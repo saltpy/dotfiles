@@ -20,6 +20,6 @@ mkdir -p $WORKON_HOME
 . /usr/local/bin/virtualenvwrapper.sh
 
 # eclim
-ECLIPSE_HOME=/usr/lib/eclipse
-ECLIM_HOME=~/.eclipse/org.eclipse.platform_3.7.0_155965261
+ECLIPSE_HOME=/opt/eclipse
+ECLIM_HOME=$HOME/.eclipse/org.eclipse.platform_3.7.0_155965261
 PATH=$PATH:$ECLIM_HOME
