@@ -20,4 +20,4 @@ mkdir -p $WORKON_HOME
 . /usr/local/bin/virtualenvwrapper.sh
 
 # eclim
-ECLIPSE_HOME=/use/bin/eclipse
+ECLIPSE_HOME=/usr/bin/eclipse
