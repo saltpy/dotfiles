@@ -19,5 +19,7 @@ export WORKON_HOME=~/Envs
 mkdir -p $WORKON_HOME
 . /usr/local/bin/virtualenvwrapper.sh
 
-# eclim
-ECLIPSE_HOME=/usr/bin/eclipse
+export ECLIPSE_HOME=/usr/lib/eclipse
+
+# Start eclimd
+alias eclimd='Xvfb :1 -screen 0 1024x765x24 &; DISPLAY=:1 ./eclipse/eclimd'
