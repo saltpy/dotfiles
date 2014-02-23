@@ -10,6 +10,15 @@
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/html5"]
-	path = vim/bundle/html5
-	url = https://github.com/kaihendry/vim-html5.git
+[submodule "vim-clojure-highlight"]
+	path = vim-clojure-highlight
+	url = ./vim/bundle/vim-clojure-highlight/
+[submodule "vim-clojure-static"]
+	path = vim-clojure-static
+	url = ./vim/bundle/vim-clojure-static/
+[submodule "vim-fireplace"]
+	path = vim-fireplace
+	url = ./vim/bundle/vim-fireplace/
+[submodule "rainbow_parentheses.vim"]
+	path = rainbow_parentheses.vim
+	url = ./vim/bundle/rainbow_parentheses.vim/
