@@ -18,8 +18,3 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export WORKON_HOME=~/Envs
 mkdir -p $WORKON_HOME
 . /usr/local/bin/virtualenvwrapper.sh
-
-export ECLIPSE_HOME=/usr/lib/eclipse
-
-# Start eclimd
-alias eclimd='Xvfb :1 -screen 0 1024x765x24 &; DISPLAY=:1 ./eclipse/eclimd'
