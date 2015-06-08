@@ -6,6 +6,8 @@ rm -rf ~/.vim
 
 cp bashrc ~/.bashrc
 cp vimrc ~/.vimrc
+cp Vagrantfile ~/Vagrantfile
+
 mkdir ~/.vim
 mkdir ~/.vim/bundle
 mkdir ~/.vim/autoload
