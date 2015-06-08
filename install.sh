@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-git pull origin master
-git submodule init
-git submodule update
-
-sudo apt-get update
-sudo apt-get install curl -y
-mkdir -p vim/autoload
-curl -Sso vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-
-rm -f ~/.vimrc
-cp vimrc ~/.vimrc
 rm -f ~/.bashrc
-cp bashrc ~/.bashrc
+rm -f ~/.vimrc
 rm -rf ~/.vim
-cp -R vim ~/.vim
+
+cp bashrc ~/.bashrc
+cp vimrc ~/.vimrc
+mkdir ~/.vim
+mkdir ~/.vim/bundle
+mkdir ~/.vim/autoload
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+cd ~/.vim/bundle
+git clone git://github.com/kien/ctrlp.vim.git
+git clone git://github.com/altercation/vim-colors-solarized.git
+git clone git://github.com/ervandew/supertab.git
+cd -
