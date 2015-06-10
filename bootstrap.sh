@@ -2,6 +2,8 @@
 
 mkdir -p ~/src
 
+sudo apt-get update
+sudo apt-get fix-missing
 sudo apt-get install -y build-essential python-dev git python-setuptools python-dev python-crypto python-pip python-virtualenv
 
 git config --global user.name "James Salt"
