@@ -4,9 +4,8 @@ rm -f ~/.bashrc
 rm -f ~/.vimrc
 rm -rf ~/.vim
 
-cp bashrc ~/.bashrc
-cp vimrc ~/.vimrc
-cp Vagrantfile ~/Vagrantfile
+cp ~/src/dotfiles/bashrc ~/.bashrc
+cp ~/src/dotfiles/vimrc ~/.vimrc
 
 mkdir ~/.vim
 mkdir ~/.vim/bundle

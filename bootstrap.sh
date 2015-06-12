@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+rm -rf ~/src ~/bin ~/lib ~/doc ~/art
 mkdir -p ~/src ~/bin ~/lib ~/doc ~/art
 
 sudo apt-get update
