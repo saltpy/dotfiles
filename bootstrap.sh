@@ -15,9 +15,5 @@ git config --global user.name "James Salt"
 git config --global user.email "saltpy@gmail.com"
 git config --global core.autoclrf false
 
-cd src
-git clone http://github.com/saltpy/dotfiles.git
-  cd dotfiles
-  ./install.sh
-  cd -
-cd -
+git clone http://github.com/saltpy/dotfiles.git src/dotfiles
+bash src/dotfiles/install.sh
