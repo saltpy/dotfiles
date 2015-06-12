@@ -4,7 +4,7 @@ rm -rf ~/src ~/bin ~/lib ~/doc ~/art
 mkdir -p ~/src ~/bin ~/lib ~/doc ~/art
 
 sudo apt-get update
-sudo apt-get fix-missing
+sudo apt-get --fix-missing
 sudo apt-get install -y build-essential python-dev git python-setuptools python-dev python-crypto python-pip python-virtualenv
 
 virtualenv ~/fab
