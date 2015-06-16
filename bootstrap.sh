@@ -4,7 +4,7 @@ rm -rf ~/src ~/bin ~/lib ~/doc ~/art ~/env
 mkdir -p ~/src ~/bin ~/lib ~/doc ~/art ~/env
 
 sudo apt-get update --fix-missing
-sudo apt-get install -y build-essential python-dev git python-setuptools python-dev python-crypto python-pip python-virtualenv
+sudo apt-get install -y vim build-essential python-dev git python-setuptools python-dev python-crypto python-pip python-virtualenv
 
 virtualenv ~/env/fab
 . ~/env/fab/bin/activate
