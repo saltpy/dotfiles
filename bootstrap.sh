@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-rm -rf ~/src ~/bin ~/lib ~/doc ~/art
-mkdir -p ~/src ~/bin ~/lib ~/doc ~/art
+rm -rf ~/src ~/bin ~/lib ~/doc ~/art ~/env
+mkdir -p ~/src ~/bin ~/lib ~/doc ~/art ~/env
 
 sudo apt-get update --fix-missing
 sudo apt-get install -y build-essential python-dev git python-setuptools python-dev python-crypto python-pip python-virtualenv
 
-virtualenv ~/fab
-. ~/fab/bin/activate
+virtualenv ~/env/fab
+. ~/env/fab/bin/activate
 pip install fabric
 deactivate
 
