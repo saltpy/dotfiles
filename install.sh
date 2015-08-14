@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-rm -f ~/.bashrc
-rm -f ~/.vimrc
+set -e
+
+touch ~/.bash_profile
+touch ~/.vimrc
+mv ~/.bash_profile ~/.bash_profile.old
+mv ~/.vimrc ~/.vimrc.old
 rm -rf ~/.vim
 
 mkdir -p ~/.vim
@@ -9,9 +13,9 @@ mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/autoload
 
 pushd ~/src/dotfiles
-cp bashrc ~/.bashrc
+cp bash_profile ~/.bash_profile
 cp vimrc ~/.vimrc
-cp -R pip ~/.pip
+cp bash_prompt ~/.bash_prompt
 popd
 
 pushd ~/.vim/autoload
