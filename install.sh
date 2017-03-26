@@ -28,3 +28,6 @@ git clone git@github.com:altercation/vim-colors-solarized
 git clone git@github.com:ervandew/supertab
 popd
 
+pushd lib
+git clone git@github.com:kward/shunit2
+popd
