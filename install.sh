@@ -29,11 +29,12 @@ git clone git@github.com:ervandew/supertab
 popd
 
 pushd lib
-git clone git@github.com:kward/shunit2
+rm -rf shunit2
+git clone git@github.com:kward/shunit2 > /dev/null 
 popd
 
-mkdir ~/lib
-mkdir ~/bin
+mkdir -p ~/lib
+mkdir -p ~/bin
 
 cp -R ./lib/* ~/lib/
 cp -R ./bin/* ~/bin/
