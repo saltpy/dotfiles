@@ -18,7 +18,7 @@ function create() {
 
     case "$type" in
         "project")
-            if containsMatch "${kwargs[@]}" "--parent=.*";then
+            if containsMatch "${kwargs[@]}" \-\-parent\=*;then
                 mkdir -p "$(kwargValue "${kwargs[@]}" "--parent")/${args[0]}"
                 cd "$(kwargValue "${kwargs[@]}" "--parent")/${args[0]}" || exit 1
             else
