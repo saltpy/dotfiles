@@ -22,6 +22,8 @@ set hlsearch
 
 set colorcolumn=80
 
+set autoread
+
 au BufRead,BufNewFile Makefile set noexpandtab
 au BufRead,BufWrite *.js,*.html,*.css set shiftwidth=2
 au BufRead,BufWrite *.js,*.html,*.css set tabstop=2
@@ -60,3 +62,4 @@ endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
 command Shlint Shell shellcheck -Cnever -x %
+command Shunit Shell ~/bin/shunit.sh %

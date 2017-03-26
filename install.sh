@@ -31,3 +31,9 @@ popd
 pushd lib
 git clone git@github.com:kward/shunit2
 popd
+
+mkdir ~/lib
+mkdir ~/bin
+
+cp -R ./lib/* ~/lib/
+cp -R ./bin/* ~/bin/
