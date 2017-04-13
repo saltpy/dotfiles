@@ -3,8 +3,11 @@ call pathogen#infect()
 syntax enable
 filetype plugin indent on
 
+set nocp
+set nocompatible
 set nobackup
 set nowritebackup
+
 set clipboard=unnamed
 
 set tabstop=4
@@ -12,6 +15,7 @@ set shiftwidth=4
 set expandtab
 
 set wildmode=longest,list
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar,*/build/*,*/node_modules/*,*.vagrant/*,*.git/*,*/local/*,*/target/*
 set wildmenu
 set laststatus=2
 set cmdheight=2
@@ -24,21 +28,13 @@ set colorcolumn=80
 
 set autoread
 
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 au BufRead,BufNewFile Makefile set noexpandtab
-au BufRead,BufWrite *.js,*.html,*.css set shiftwidth=2
-au BufRead,BufWrite *.js,*.html,*.css set tabstop=2
 
 let g:solarized_termcolors=256
 set background=light
 colorscheme solarized
-
-let g:ctrlp_working_path_mode = 'ra'
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar,*/build/*,*/node_modules/*,*.vagrant/*,*.git/*,*/local/*,*/target/*
-
-function! BufferEmpty()
-
-endfunction
 
 function! s:ExecuteInShell(command)
   let command = join(map(split(a:command), 'expand(v:val)'))
@@ -63,3 +59,5 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
 command Shlint Shell shellcheck -Cnever -x %
 command Shunit Shell ~/bin/shunit.sh %
+command Maven Shell mvn
+command Make Shell make

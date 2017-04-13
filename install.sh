@@ -2,39 +2,36 @@
 
 set -e
 
-touch ~/.bash_profile
-touch ~/.vimrc
-mv ~/.bash_profile ~/.bash_profile.old
-mv ~/.vimrc ~/.vimrc.old
-rm -rf ~/.vim
+root=$(dirname $0)
 
-mkdir -p ~/.vim
-mkdir -p ~/.vim/bundle
+echo "Clean"
+rm -rf ~/.vim > /dev/null
+mkdir -p ~/.vim > /dev/null
+
+echo "Install bash config"
+cp $root/bash_alias ~/.bash_alias
+cp $root/bash_profile ~/.bash_profile
+cp $root/bash_profile ~/.bashrc
+cp $root/bash_prompt ~/.bash_prompt
+
+echo "Install vim config"
+cp $root/vimrc ~/.vimrc
+
+echo "Install vim pathogen"
 mkdir -p ~/.vim/autoload
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim > /dev/null
 
-pushd ~/src/dotfiles
-cp bash_profile ~/.bash_profile
-cp vimrc ~/.vimrc
-cp bash_prompt ~/.bash_prompt
-popd
+echo "Install vim bundles"
+git clone git@github.com:altercation/vim-colors-solarized ~/.vim/bundle/vim-colours-solarized > /dev/null 2>&1
+git clone git@github.com:artur-shaik/vim-javacomplete2 ~/.vim/bundle/vim-javacomplete2 > /dev/null 2>&1
 
-pushd ~/.vim/autoload
-curl -LSso pathogen.vim https://tpo.pe/pathogen.vim
-popd
+echo "Install git config"
+cp $root/gitconfig ~/.gitconfig
 
-pushd ~/.vim/bundle
-git clone git@github.com:kien/ctrlp.vim
-git clone git@github.com:altercation/vim-colors-solarized
-git clone git@github.com:ervandew/supertab
-popd
-
-pushd lib
-rm -rf shunit2
-git clone git@github.com:kward/shunit2 > /dev/null 
-popd
-
+echo "Install ~/lib"
 mkdir -p ~/lib
-mkdir -p ~/bin
+cp -R $root/lib ~/lib
 
-cp -R ./lib/* ~/lib/
-cp -R ./bin/* ~/bin/
+echo "Install ~/bin"
+mkdir -p ~/bin
+cp -R $root/bin ~/bin

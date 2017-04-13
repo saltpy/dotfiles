@@ -1,0 +1,16 @@
+[user]
+	name = James Salt
+	email = saltpy@gmail.com
+[merge]
+	tool = vimdiff
+[alias]
+    # Log
+    l = log --oneline --decorate
+    # Outgoing
+    o = log --oneline --decorate master..HEAD
+    # Show Head Master
+    shm = ! git show $(git log --oneline --decorate master | cut -d " " -f 1)
+    # Branch Tip hash for Master
+    btm = ! git log master | head -n 1 | cut -d \" \" -f 2
+    # List Alias'
+    la = ! git config -l | grep alias | cut -c 7-
