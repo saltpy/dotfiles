@@ -4,8 +4,6 @@ set -e
 
 root=$(dirname $0)
 
-echo $root
-
 echo "Clean"
 rm -rf ~/.bash_sessions
 rm -rf ~/bin > /dev/null
