@@ -1,1 +1,1 @@
-alias vi="/usr/local/bin/vim"
+alias vi="$(which vim)"

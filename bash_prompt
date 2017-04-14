@@ -1,37 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -ueo pipefail
-
-. $(dirname $0)/bin/steamcat.util.sh
-
-function set_branch_info {
-    if ! $(git branch > /dev/null 2>&1) ;then
-        BRANCH=""
+function branch_info {
+    git branch > /dev/null 2>&1 
+    if test $? -ne 0 ;then
+        echo ""
     else
-        git_status="$(git status 2> /dev/null)"
-
-        if [[ $git_status =~ "working directory clean" ]];then
-            state="$GREEN"
-        elif [[ $git_status =~ "Changes to be committed" ]];then
-            state="$BLUE"
-        else
-            state="$RED"
-        fi
-
-        branch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
-
-        BRANCH="$state$branch$NC "
+        echo "$(git rev-parse --abbrev-ref HEAD 2> /dev/null) "
     fi
+    return 0
 }
 
-function set_bash_prompt {
+function prompt {
     if test $? -eq 0 ;then
-        PROMPT_SYMBOL="$GREEN\$$NC"
-    else 
-        PROMPT_SYMBOL="$RED\$$NC"
+        cs="\033[0;32m\$\033[0m"
+    else
+        cs="\033[0;31m\$\033[0m"
     fi
-    set_branch_info
-    PS1="$COLOR_NONE\u@\h \W $BRANCH$PROMPT_SYMBOL "
+    bi=$(branch_info)
+
+    PS1="\033[0;32m\u@\h \W \033[1;34m$bi$cs "
 }
 
-PROMPT_COMMAND=set_bash_prompt
+PROMPT_COMMAND=prompt
