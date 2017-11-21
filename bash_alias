@@ -1,1 +1,69 @@
+function ide__list {
+    echo "Saved sessions:"
+    tmux ls 2> /dev/null | cut -d ":" -f 1
+    echo ""
+    echo "Projects":
+    ls -1 /srv/src
+}
+
+function ide__attach {
+    tmux send-keys -t $1:1.0 "vi" C-m
+    tmux send-keys -t $1:1.1 ". ~/.virtualenvs/$1/bin/activate; clear" C-m
+    tmux attach -t $1
+}
+
+function ide__create {
+    mkdir -p /srv/src/$1
+    cd /srv/src/$1
+    tmux new-session -s $1 -n 1 -d
+    tmux split-window -h -p 40 -t $1:1.0
+    ide__attach $1
+}
+
+function ide__main {
+    if [[ -z $1 ]];then
+        list
+    else
+        tmux ls 2> /dev/null | grep -q $1 && ide_attach $1 || (ide__create $1 && ide_attach $1)
+    fi
+}
+
+function workon__main {
+    if [ -z $1 ];then
+        test -z $(echo $VIRTUAL_ENV) || deactivate
+    else
+        cd ~/src/$1
+        test -d ~/.virtualenvs/$1 && source ~/.virtualenvs/$1/bin/activate
+    fi
+}
+
+function eyeball__main {
+    echo $1 | grep -q ".pdf" && pdf2html $1 | lynx -stdin || pandoc $1 | lynx -stdin
+}
+
+function bootstrap__mac {
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install jq python3 git tmux vim pandoc pdftohtml lynx ack
+}
+
+function bootstrap__ubuntu {
+    apt-get install -y jq python3 git tmux vim pandoc pdftohtml lynx ack
+}
+
+function bootstrap__main {
+    echo $1 | grep -q "Darwin" && bootstrap__mac
+    echo $1 | grep -q "Ubuntu" && bootstrap__ubuntu
+}
+
+function ssh__main {
+    scp /srv/src/dotfiles/install.py $1
+    ssh $1 python install.py && exit
+    ssh $@
+}
+
+alias bootstrap="bootstrap__main "$(uname -rv)""
 alias vi="$(which vim)"
+alias workon="workon__main $1"
+alias eyeball="eyeball__main $1"
+alias ide="ide__main $1"
+alias ssh="ssh__main $@"
