@@ -57,7 +57,7 @@ function bootstrap__main {
 
 function infect__main {
     scp /srv/src/dotfiles/install.py $1:~/install.py
-    ssh $1 ~/install.py && exit
+    ssh $1 ./install.py
 }
 
 alias infect="infect__main $1"
