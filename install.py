@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import shlex
 import glob
@@ -10,8 +10,10 @@ import errno
 HOME = os.path.expanduser(os.environ["HOME"])
 SRC = "/srv/src/dotfiles"
 if not os.path.exists(SRC):
-    os.makedirs("/srv/src")
     with open("/dev/null", "w") as devnull:
+        chmod = subprocess.Popen(shlex.split("sudo chmod 777 /srv"), stdout=devnull, stderr=devnull)
+        chmod.wait()
+        os.makedirs("/srv/src")
         clone = subprocess.Popen(shlex.split("git clone http://github.com/saltpy/dotfiles " + SRC), stdout=devnull, stderr=devnull)
         clone.wait()
 
@@ -19,5 +21,3 @@ if not os.path.exists(SRC):
         print(fp)
         if os.path.isfile(fp) and not fp.endswith(".py"):
             shutil.copyfile(fp, os.path.join(HOME, "." + os.path.basename(fp)))
-
-    shutil.copytree(os.path.join(SRC, "ssh"), os.path.join(HOME, ".ssh")) 

@@ -47,7 +47,7 @@ function bootstrap__mac {
 }
 
 function bootstrap__ubuntu {
-    apt-get install -y jq python3 git tmux vim pandoc pdftohtml lynx ack
+    sudo apt install -y jq python3 git tmux vim pandoc pdftohtml lynx ack
 }
 
 function bootstrap__main {
@@ -55,15 +55,14 @@ function bootstrap__main {
     echo $1 | grep -q "Ubuntu" && bootstrap__ubuntu
 }
 
-function ssh__main {
-    scp /srv/src/dotfiles/install.py $1
-    ssh $1 python install.py && exit
-    ssh $@
+function infect__main {
+    scp /srv/src/dotfiles/install.py $1:~/install.py
+    ssh $1 ~/install.py && exit
 }
 
+alias infect="infect__main $1"
 alias bootstrap="bootstrap__main "$(uname -rv)""
 alias vi="$(which vim)"
 alias workon="workon__main $1"
 alias eyeball="eyeball__main $1"
 alias ide="ide__main $1"
-alias ssh="ssh__main $@"
