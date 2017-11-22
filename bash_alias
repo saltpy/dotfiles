@@ -22,7 +22,7 @@ function ide__create {
 
 function ide__main {
     if [[ -z $1 ]];then
-        list
+        ide__list
     else
         tmux ls 2> /dev/null | grep -q $1 && ide_attach $1 || (ide__create $1 && ide_attach $1)
     fi
