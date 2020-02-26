@@ -1,8 +1,6 @@
 [user]
 	name = James Salt
-	email = james.salt@williamhill.com
-[url "git@git.nonprod.williamhill.plc:"]
-    insteadOf = "whgit:"
+	email = saltpy@gmail.com
 [merge]
 	tool = vimdiff
 [alias]

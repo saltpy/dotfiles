@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+srcroot=$(git rev-parse --show-toplevel)
+
+for fp in $(find $srcroot -depth 1 -type f);do
+	cp $fp ~/.$(basename $fp)
+done
